@@ -4,7 +4,7 @@
 
 
 <!-- STEP ONE -->
-5/6. Method (before and after Ajax): Finished/200
+5/6 . Method (before and after Ajax): Finished/200
    Status (before and after Ajax): Finished/200
    Type (before Ajax): document/script
    Type (after Ajax): xhr is added
