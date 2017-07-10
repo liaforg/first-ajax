@@ -3,13 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
   var runAjaxRequest = document.getElementById('run_ajax_request');
   var runPingPong = document.getElementById('run_ping_pong');
   var runAjaxCount = document.getElementById('run_ajax_count');
+  var runAjaxTime = document.getElementById('run_ajax_time');
 
   /* Your code goes here */
 
   runAjaxRequest.addEventListener('click', function(){
 
     $.ajax({
-      url: ' http://first-ajax-api.herokuapp.com/',
+      url: 'http://first-ajax-api.herokuapp.com/',
       method: 'GET',
       dataType: 'text',
     });
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   runPingPong.addEventListener('click', function(){
 
     $.ajax({
-      url: ' http://first-ajax-api.herokuapp.com/pong',
+      url: ' http://first-ajax-api.herokuapp.com/ping',
       method: 'GET',
       dataType: 'text',
       })
@@ -64,8 +65,22 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   });
 
+  runAjaxTime.addEventListener('click', function(){
 
+    $.ajax({
+      url: ' http://first-ajax-api.herokuapp.com/time',
+      method: 'GET',
+      dataType: 'text',
+      data: {
+        timezone: 'Europe/Sofia'
+        }
+    })
 
-
-
+      .done(function (responseData){
+      console.log(responseData);
+      var element = document.createElement('div');
+      element.innerHTML = responseData;
+      document.querySelector('#step8').append(element);
+      })
+    });
 });
