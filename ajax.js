@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var runAjaxRequest = document.getElementById('run_ajax_request');
   var runPingPong = document.getElementById('run_ping_pong');
+  var runAjaxCount = document.getElementById('run_ajax_count');
 
   /* Your code goes here */
 
@@ -44,7 +45,27 @@ document.addEventListener("DOMContentLoaded", function() {
       always.innerHTML = "Hey the request finished!";
       document.querySelector('#step3456').append(always);
       });
-
   });
+
+  runAjaxCount.addEventListener('click', function(){
+
+    $.ajax({
+      url: ' http://first-ajax-api.herokuapp.com/count',
+      method: 'GET',
+      dataType: 'text',
+    })
+
+    .done(function (responseData){
+    console.log('yay we did it!')
+    console.log(responseData);
+    var element = document.createElement('div');
+    element.innerHTML = responseData;
+    document.querySelector('#step7').append(element);
+    })
+  });
+
+
+
+
 
 });
