@@ -17,12 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
   runPingPong.addEventListener('click', function(){
 
     $.ajax({
-      url: ' http://first-ajax-api.herokuapp.com/ping',
+      url: ' http://first-ajax-api.herokuapp.com/pong',
       method: 'GET',
       dataType: 'text',
       })
 
       .done(function (responseData){
+      console.log('yay we did it!')
       console.log(responseData);
       var element = document.createElement('div');
       element.innerHTML = responseData;
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
       })
 
       .fail(function( jqXHR, textStatus, errorThrown){
-      console.log('inside .fail()');
+      console.log('that did not go well!');
       console.log(textStatus, errorThrown);
       var fail = document.createElement('div');
       fail.innerHTML = "Your request has failed!";
@@ -38,7 +39,10 @@ document.addEventListener("DOMContentLoaded", function() {
       })
 
       .always(function(){
-      console.log('inside .always()');
+      console.log('all i know is, its over');
+      var always = document.createElement('div');
+      always.innerHTML = "Hey the request finished!";
+      document.querySelector('#step3456').append(always);
       });
 
   });
