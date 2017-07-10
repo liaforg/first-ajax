@@ -20,16 +20,24 @@ document.addEventListener("DOMContentLoaded", function() {
       url: ' http://first-ajax-api.herokuapp.com/ping',
       method: 'GET',
       dataType: 'text',
-      }).done(function (responseData){
-      console.log(responseData);
+      })
 
+      .done(function (responseData){
+      console.log(responseData);
       var element = document.createElement('div');
       element.innerHTML = responseData;
       document.querySelector('#step3456').append(element);
-      }).fail(function( jqXHR, textStatus, errorThrown){
+      })
+
+      .fail(function( jqXHR, textStatus, errorThrown){
       console.log('inside .fail()');
       console.log(textStatus, errorThrown);
-      }).always(function(){
+      var fail = document.createElement('div');
+      fail.innerHTML = "Your request has failed!";
+      document.querySelector('#step3456').append(fail);
+      })
+
+      .always(function(){
       console.log('inside .always()');
       });
 
