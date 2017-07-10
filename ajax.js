@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var runPingPong = document.getElementById('run_ping_pong');
   var runAjaxCount = document.getElementById('run_ajax_count');
   var runAjaxTime = document.getElementById('run_ajax_time');
+  var runAjaxCar = document.getElementById('run_ajax_car');
 
   /* Your code goes here */
 
@@ -83,4 +84,22 @@ document.addEventListener("DOMContentLoaded", function() {
       document.querySelector('#step8').append(element);
       })
     });
+
+  runAjaxCar.addEventListener('click', function(){
+
+    $.ajax({
+      url: ' http://first-ajax-api.herokuapp.com/a_car',
+      method: 'GET',
+      dataType: 'html',
+    })
+
+    .done(function (responseData){
+    console.log(responseData);
+    var element = document.createElement('div');
+    element.innerHTML = responseData;
+    document.querySelector('#step9').append(element);
+    document.querySelector('#car').append(element);
+    })
+  });
+
 });
